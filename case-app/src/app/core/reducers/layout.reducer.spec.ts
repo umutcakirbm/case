@@ -1,5 +1,5 @@
 import { reducer, initialState } from './layout.reducer';
-import {NavigatedToBox, NavigateToBox, NotNavigatedToBox} from "../actions/layout.actions";
+import { NavigatedToBox, NavigateToBox, NotNavigatedToBox } from "../actions/layout.actions";
 
 describe('Layout Reducer', () => {
   describe('an Layout action', () => {

@@ -5,10 +5,6 @@ import { NavigationComponent } from "./components/navigation.component";
 import { WrapperComponent } from "./components/wrapper.component";
 import { FooterComponent } from "./components/footer.component";
 import { AppComponent } from "./containers/app.component";
-import { EffectsModule } from '@ngrx/effects';
-import { LayoutEffects } from './effects/layout.effects';
-import { StoreModule } from '@ngrx/store';
-import * as fromLayoutState from './reducers';
 
 export const COMPONENTS = [
   NavigationComponent,
@@ -20,9 +16,7 @@ export const COMPONENTS = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    StoreModule.forFeature('layoutState', fromLayoutState.reducers),
-    EffectsModule.forFeature([LayoutEffects]),
+    RouterModule
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
