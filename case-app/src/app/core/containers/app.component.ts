@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
   template: `
     <app-navigation
-      [differentProductCount]="0"
+      [differentProductCount]="1"
       (navigateToBoxEvent)="navigateTo('products/box')">
     </app-navigation>
     <app-wrapper>
