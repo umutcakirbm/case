@@ -10,7 +10,6 @@ import { Router } from "@angular/router";
 import { NgModuleFactoryLoader } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { metaReducers, reducers } from "../../reducers";
-import * as fromLayoutState from "../reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {LayoutEffects} from "../effects/layout.effects";
 
@@ -26,7 +25,6 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         StoreModule.forRoot(reducers, { metaReducers }),
-        StoreModule.forFeature('layoutState', fromLayoutState.reducers),
         EffectsModule.forRoot([]),
         EffectsModule.forFeature([LayoutEffects]),
       ],

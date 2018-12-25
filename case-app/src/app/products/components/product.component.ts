@@ -14,7 +14,11 @@ import { Product } from "../models/product";
         <p class="card-text">{{ product?.detail }}</p>
       </div>
       <div class="card-footer text-center">
-        <small class="text-muted"><a class="btn btn-block btn-primary" href="javascript:;" (click)="addToBox(product)">Sepete Ekle</a></small>
+        <small class="text-muted">
+          <a class="btn btn-block btn-primary"
+             href="javascript:;"
+             (click)="addToBox(product)">Sepete Ekle</a>
+        </small>
       </div>
     </div>
   `
