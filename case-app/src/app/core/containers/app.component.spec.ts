@@ -1,13 +1,18 @@
 import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { AppComponent } from './app.component';
-import {NavigationComponent} from "../components/navigation.component";
-import {WrapperComponent} from "../components/wrapper.component";
-import {FooterComponent} from "../components/footer.component";
-import {ProductsModule} from "../../products/products.module";
-import {Router} from "@angular/router";
-import {NgModuleFactoryLoader} from "@angular/core";
+import { NavigationComponent } from "../components/navigation.component";
+import { WrapperComponent } from "../components/wrapper.component";
+import { FooterComponent } from "../components/footer.component";
+import { ProductsModule } from "../../products/products.module";
+import { Router } from "@angular/router";
+import { NgModuleFactoryLoader } from "@angular/core";
+import { StoreModule } from "@ngrx/store";
+import { metaReducers, reducers } from "../../reducers";
+import * as fromLayoutState from "../reducers";
+import {EffectsModule} from "@ngrx/effects";
+import {LayoutEffects} from "../effects/layout.effects";
 
 describe('AppComponent', () => {
 
@@ -19,7 +24,11 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        StoreModule.forRoot(reducers, { metaReducers }),
+        StoreModule.forFeature('layoutState', fromLayoutState.reducers),
+        EffectsModule.forRoot([]),
+        EffectsModule.forFeature([LayoutEffects]),
       ],
       declarations: [
         NavigationComponent,
@@ -52,7 +61,7 @@ describe('AppComponent', () => {
       {path: 'products', loadChildren: 'lazyModule'},
     ]);
 
-    instance.navigateTo('products/box');
+    instance.navigateToBox();
     tick();
     fixture.detectChanges();
 

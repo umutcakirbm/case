@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { Router } from "@angular/router";
+import * as fromLayout from '../reducers'
+import { Store } from "@ngrx/store";
+import { NavigateToBox } from "../actions/layout.actions";
 
 @Component({
   selector: 'app-root',
   template: `
     <app-navigation
       [differentProductCount]="1"
-      (navigateToBoxEvent)="navigateTo('products/box')">
+      (navigateToBoxEvent)="navigateToBox()">
     </app-navigation>
     <app-wrapper>
       <router-outlet></router-outlet>
@@ -18,10 +20,10 @@ export class AppComponent {
   productsOnBox$: any;
 
   constructor(
-    private router: Router
+    private store: Store<fromLayout.State>
   ) {}
 
-  navigateTo(path) {
-    this.router.navigate([path]).then();
+  navigateToBox() {
+    this.store.dispatch(new NavigateToBox());
   }
 }
