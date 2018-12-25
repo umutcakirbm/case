@@ -1,5 +1,5 @@
 import { reducer, initialState } from './layout.reducer';
-import { NavigatedToBox, NavigateToBox } from "../actions/layout.actions";
+import {NavigatedToBox, NavigateToBox, NotNavigatedToBox} from "../actions/layout.actions";
 
 describe('Layout Reducer', () => {
   describe('an Layout action', () => {
@@ -19,6 +19,12 @@ describe('Layout Reducer', () => {
       const action = new NavigatedToBox();
       const result = reducer(initialState, action);
       expect(result.navigatingToBox).toBe(false);
+    });
+
+    it('should return the navigation to box not ended state', () => {
+      const action = new NotNavigatedToBox({error: 'test'});
+      const result = reducer(initialState, action);
+      expect(result.error).toBe('test');
     });
 
   });
