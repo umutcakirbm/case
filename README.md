@@ -13,6 +13,11 @@
 ### Environment Configurations
 - You can set build parameters in `docker-compose.yml`.
 
+#### Browser Port Settings
+- Production Env: `http://localhost:3000`
+- Test Env: `http://localhost:3001`
+- Development Env: `http://localhost:3002`
+
 #### Parameters
 - configuration (default: `production`)
 - outputPath (default: `./dist`)

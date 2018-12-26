@@ -22,5 +22,6 @@ services:
       args:
         configuration: dev
         aot: 'false'
+        buildOptimizer: 'false'
     ports:
       - '3002:80'
