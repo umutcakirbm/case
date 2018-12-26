@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  production:
+    image: 'migros-case:prod'
+    build:
+      context: .
+    ports:
+      - '3000:80'
+  test:
+    image: 'migros-case:test'
+    build:
+      context: .
+      args:
+        configuration: test
+    ports:
+      - '3001:80'
+  dev:
+    image: 'migros-case:dev'
+    build:
+      context: .
+      args:
+        configuration: dev
+        aot: 'false'
+    ports:
+      - '3002:80'
